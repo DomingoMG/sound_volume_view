@@ -1,6 +1,6 @@
 SoundVolumeView that displays general information and the current volume level for all active sound components in your system, and allows you to instantly mute and unmute them.
 
-
+![](https://github.com/DomingoMG/sound_volume_view/blob/assets/SoundVolumeView.png?raw=true)
 
 ## Expressions of gratitude
 First of all thanks to nirsoft for creating SoundVolumeView.exe. Without this it would not be possible for Windows.
