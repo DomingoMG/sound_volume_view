@@ -81,7 +81,7 @@ Device outputDeviceFound = soundVolumeView.outputDevices.firstWhere((element) =>
 await soundVolumeView.setAppDefault(soundVolumeView.applicationDevices[index], device, defaultType: DefaultType.all);
 ```
 
-#### You can assign output devices to applications via the pid process
+#### Indicates which is the default output device, communications, etc...
 ```dart
 await soundVolumeView.setDefault(soundVolumeView.outputDevices[index], defaultType: DefaultType.all);
 ```
