@@ -22,6 +22,7 @@ class Device {
 	String? processID;
 	String? windowTitle;
 	String? registryKey;
+  bool listen = true;
 
 	Device({
     this.name, 
@@ -73,6 +74,7 @@ class Device {
 		processID = json['Process ID'];
 		windowTitle = json['Window Title'];
 		registryKey = json['Registry Key'];
+    listen = true;
 	}
 
 	Map<String, dynamic> toJson() {
