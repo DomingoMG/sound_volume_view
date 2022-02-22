@@ -7,11 +7,16 @@ First of all thanks to nirsoft for creating SoundVolumeView.exe. Without this it
 https://www.nirsoft.net/utils/sound_volume_view.html
 
 ## Getting started
-Supported platforms:
+Supported platforms:  
+  
   Windows [ X ]
+  
   MacOS [ ]
+  
   Linux [ ]
+  
   Android [ ]
+  
   iOS [ ]
 
 ## Usage
