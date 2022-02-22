@@ -8,11 +8,11 @@ https://www.nirsoft.net/utils/sound_volume_view.html
 
 ## Getting started
 Supported platforms:
-Windows [ X ]
-MacOS [ ]
-Linux [ ]
-Android [ ]
-iOS [ ]
+  Windows [ X ]
+  MacOS [ ]
+  Linux [ ]
+  Android [ ]
+  iOS [ ]
 
 ## Usage
 SoftwarePatch should indicate the folder where you have the executable ```SoundVolumeView.exe```..
