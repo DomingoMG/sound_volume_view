@@ -1,8 +1,8 @@
 name: sound_volume_view
 description: Sound Volume View
-homepage: https://github.com/DomingoMG/sound_volume_view.dart
-repository: https://github.com/DomingoMG/sound_volume_view.dart
-version: 0.0.2
+homepage: https://github.com/DomingoMG/sound_volume_view
+repository: https://github.com/DomingoMG/sound_volume_view
+version: 0.0.3
 
 environment:
   sdk: ">=2.16.0 <3.0.0"
@@ -12,12 +12,13 @@ dependencies:
   flutter:
     sdk: flutter
   
-  path: ^1.8.1
+  path: ^1.8.0
   process_run: ^0.12.3+2
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+    
   flutter_lints: ^1.0.0
 
 # For information on the generic Dart part of this file, see the
