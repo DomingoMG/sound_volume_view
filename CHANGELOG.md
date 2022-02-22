@@ -1,3 +1,8 @@
+## 0.0.5
+* UPDATE Readme.md
+* Added ```setAppDefault``` method
+* Added ```setDefault``` method
+
 ## 0.0.4
 * UPDATE Readme.md
 * Added ```setListenToThisDevice``` method

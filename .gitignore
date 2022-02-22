@@ -8,7 +8,16 @@
 .buildlog/
 .history
 .svn/
-/example/
+/example/build/
+/example/android/
+/example/ios/
+/example/.dart_tool/
+/example/.idea/
+/example/test/
+/example/windows/
+/example/web/
+
+
 
 # IntelliJ related
 *.iml

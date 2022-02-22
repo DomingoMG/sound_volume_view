@@ -1,4 +1,3 @@
-
 import 'dart:convert';
 import 'dart:io';
 import 'package:path/path.dart';
@@ -14,10 +13,10 @@ Future<void> main() async {
 
 // CHECK SOFTWARE EXIST
 Future<void> checkSoftware() async {
-  if( Platform.isWindows ){
+  if (Platform.isWindows) {
     File file = File(join(softwarePath, softwareName));
-    bool isFound = await file.exists();  
-    if( isFound ) {
+    bool isFound = await file.exists();
+    if (isFound) {
       return;
     } else {
       throw Exception('Please, Select the executable of SoundVolumeView.exe');
@@ -32,13 +31,15 @@ Future<List<Device>> getDevices() async {
   String filenameToGenerate = 'devices.json';
   String path = join(softwarePath, softwareName);
   await shell.run('$path /SaveFileEncoding 3 /sjson $filenameToGenerate');
-  
+
   String devicesPath = join(softwarePath, filenameToGenerate);
   File file = File(devicesPath);
-  if( await file.exists() ){
-    final dataString = await file.readAsString(encoding:utf8);    
+  if (await file.exists()) {
+    final dataString = await file.readAsString(encoding: utf8);
     final dataJson = jsonDecode(dataString);
-    return (dataJson as List).map(( deviceJson ) => Device.fromJson(deviceJson)).toList();
+    return (dataJson as List)
+        .map((deviceJson) => Device.fromJson(deviceJson))
+        .toList();
   } else {
     return [];
   }

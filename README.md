@@ -20,7 +20,7 @@ Supported platforms:
   iOS [ ❌ ]
 
 ## Usage
-SoftwarePatch should indicate the folder where you have the executable ```SoundVolumeView.exe```..
+SoftwarePath should indicate the folder where you have the executable ```SoundVolumeView.exe```..
 
 ```dart
 SoundVolumeView soundVolumeView = SoundVolumeView(softwarePath: 'C:\\Program Files\\Sound\\');
@@ -58,4 +58,30 @@ await soundVolumeView.setVolume(soundVolumeView.captureDevices[index], 100);
 #### You can also listen to the capture sound.
 ```dart
 await soundVolumeView.setListenToThisDevice(devices[index], listen: true);
+```
+
+#### You can also set the sound output to the recording line or application devices
+```dart
+await soundVolumeView.setListenToThisDevice(devices[index], listen: true);
+```
+
+#### DefaultType: all - Set all default types (Console, Multimedia, and Communications)
+```dart
+enum DefaultType {
+  console,
+  multimedia,
+  communications,
+  all
+}
+```
+
+#### You can assign output devices to applications via the pid process
+```dart
+Device outputDeviceFound = soundVolumeView.outputDevices.firstWhere((element) => element.itemID == itemId);
+await soundVolumeView.setAppDefault(soundVolumeView.applicationDevices[index], device, defaultType: DefaultType.all);
+```
+
+#### You can assign output devices to applications via the pid process
+```dart
+await soundVolumeView.setDefault(soundVolumeView.outputDevices[index], defaultType: DefaultType.all);
 ```
