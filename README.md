@@ -9,15 +9,15 @@ https://www.nirsoft.net/utils/sound_volume_view.html
 ## Getting started
 Supported platforms:  
   
-  Windows [ X ]
+  Windows [ ✅ ]
   
-  MacOS [ ]
+  MacOS [ ❌ ]
   
-  Linux [ ]
+  Linux [ ❌ ]
   
-  Android [ ]
+  Android [ ❌ ]
   
-  iOS [ ]
+  iOS [ ❌ ]
 
 ## Usage
 SoftwarePatch should indicate the folder where you have the executable ```SoundVolumeView.exe```..
@@ -26,9 +26,21 @@ SoftwarePatch should indicate the folder where you have the executable ```SoundV
 SoundVolumeView soundVolumeView = SoundVolumeView(softwarePath: 'C:\\Program Files\\Sound\\');
 ```
 
-#### Get list of input and output devices
+#### First to get the devices you must call: ```soundVolumeView.getDevices;```
 ```dart
 List<Device> devices = await soundVolumeView.getDevices;
+```
+
+### Once you have obtained the devices you will also have a separate list for each type.
+```dart
+  /// [captureDevices] You only get the capture devices
+  soundVolumeView.captureDevices;
+
+  /// [outputDevices] You only get the output devices
+  soundVolumeView.outputDevices;
+
+  /// [applicationDevices] You only get the application devices
+  soundVolumeView.applicationDevices;
 ```
 
 #### Set UnMute / Mute
@@ -36,6 +48,11 @@ List<Device> devices = await soundVolumeView.getDevices;
 await soundVolumeView.unMute( devices[index] );
 
 await soundVolumeView.mute( devices[index] );
+```
+
+#### Set Volume: Range [0-100] int
+```dart
+await soundVolumeView.setVolume(soundVolumeView.captureDevices[index], 100);
 ```
 
 #### You can also listen to the capture sound.

@@ -1,3 +1,8 @@
+## 0.0.4
+* UPDATE Readme.md
+* Added ```setListenToThisDevice``` method
+* Added ```setPlaybackThroughDevice``` method
+
 ## 0.0.3
 * UPDATE Readme.md
 

@@ -30,7 +30,7 @@ class SoundVolumeView {
   /// [outputDevices] You only get the output devices
   List<Device> outputDevices = <Device>[];
   
-  /// [applicationDevices] 
+  /// [applicationDevices] You only get the application devices
   List<Device> applicationDevices = <Device>[];
 
   /// [getDevices] getDevices gets all input, output, and application devices
@@ -72,6 +72,13 @@ class SoundVolumeView {
     } else {
       return [];
     }
+  }
+
+  /// [setVolume] Will lower or raise the volume to the indicated device - 0% to 100%
+  Future<void> setVolume( Device device, int volume ) async {
+    String path = join(softwarePath, _softwareName);
+    final Shell shell = Shell();
+    await shell.run('$path /SetVolume ${device.name} $volume');
   }
   
   /// [mute] mute the device

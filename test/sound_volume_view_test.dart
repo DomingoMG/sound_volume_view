@@ -10,11 +10,6 @@ const String softwareName = 'SoundVolumeView.exe';
 
 Future<void> main() async {
   await checkSoftware();
-  List<Device> devices = await getDevices();
-  for ( Device device in devices ){
-    print(device.toJson());
-  }
-  
 }
 
 // CHECK SOFTWARE EXIST
