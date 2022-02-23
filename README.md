@@ -60,9 +60,10 @@ await soundVolumeView.setVolume(soundVolumeView.captureDevices[index], 100);
 await soundVolumeView.setListenToThisDevice(devices[index], listen: true);
 ```
 
-#### You can also set the sound output to the recording line or application devices
+#### You can also set the sound output to the recording line
 ```dart
-await soundVolumeView.setListenToThisDevice(devices[index], listen: true);
+  Device outputDevice = soundVolumeView.outputDevices.firstWhere(( device ) => device.itemID == value);
+  await soundVolumeView.setPlaybackThroughDevice(soundVolumeView.captureDevices[index], outputDevice);
 ```
 
 #### DefaultType: all - Set all default types (Console, Multimedia, and Communications)

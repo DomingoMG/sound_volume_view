@@ -2,7 +2,7 @@ name: sound_volume_view
 description: SoundVolumeView that displays general information and the current volume level for all active sound components in your system, and allows you to instantly mute and unmute them.
 homepage: https://github.com/DomingoMG/sound_volume_view
 repository: https://github.com/DomingoMG/sound_volume_view
-version: 0.0.5
+version: 0.0.7
 
 environment:
   sdk: ">=2.16.0 <3.0.0"
