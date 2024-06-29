@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'dart:io';
 
+import 'package:flutter/foundation.dart';
 import 'package:process_run/process_run.dart';
 import 'package:sound_volume_view/enums/default_type.dart';
 import 'package:sound_volume_view/models/devices.dart';
@@ -19,9 +20,11 @@ class SoundVolumeView {
   void _checkPathForSoundVolumeViewExecutable({bool isTesting = false}) {
     final filePath = Platform.resolvedExecutable;
     final directoryExecutable = Directory(filePath).parent.path;
-    soundVolumeViewExecutable = File(isTesting
-        ? 'vendors/SoundVolumeView.exe'
-        : '$directoryExecutable/vendors/SoundVolumeView.exe');
+    final currentDirectory = Directory.current.path;
+    
+    soundVolumeViewExecutable = File(kDebugMode 
+      ? '$currentDirectory/assets/vendors/SoundVolumeView.exe'
+      : '$directoryExecutable/data/flutter_assets/assets/vendors/SoundVolumeView.exe');
     if (!soundVolumeViewExecutable.existsSync()) {
       throw FileSystemException('$filePath not found',
           soundVolumeViewExecutable.path);
