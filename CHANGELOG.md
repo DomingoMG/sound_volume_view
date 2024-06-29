@@ -1,3 +1,9 @@
+## 1.0.3
+* BUG FIX: Missed adding assets before vendors
+
+## 1.0.2
+* BUG FIX: Searching for SoundVolumeView.exe caused a compilation error on Windows
+
 ## 1.0.1
 * Now the file is searched in the Flutter build directory in debug mode and in release it is searched in the assets/vendors/SoundVolumeView.exe folder
 
