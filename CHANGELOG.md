@@ -1,3 +1,7 @@
+## 2.0.2
+- Readme updated
+- Changelog updated
+
 ## 2.0.1
 `checkIfSoundVolumeViewInstalled:` Added function to check if SoundVolumeView is installed on the system.
 `installSoundVolumeView:` Added function to install SoundVolumeView on the system.
