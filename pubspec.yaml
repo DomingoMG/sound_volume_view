@@ -1,18 +1,17 @@
 name: sound_volume_view
 description: "SoundVolumeView that displays general information and the current volume level for all active sound components in your system, and allows you to instantly mute and unmute them"
-version: 1.0.3
+version: 2.0.0
 homepage: https://github.com/DomingoMG/sound_volume_view
 repository: https://github.com/DomingoMG/sound_volume_view
 issue_tracker: https://github.com/DomingoMG/sound_volume_view/issues
 
 environment:
-  sdk: '>=3.4.0 <4.0.0'
-  flutter: ">=1.17.0"
+  sdk: '>=3.4.3 <4.0.0'
 
 dependencies:
   flutter:
     sdk: flutter
-  process_run: ^0.14.2
+  process_run: ^1.0.0+1
 
 dev_dependencies:
   flutter_lints: ^3.0.0

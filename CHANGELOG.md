@@ -1,3 +1,19 @@
+## 2.0.0 
+`checkIfSoundVolumeViewInstalled:` Añadida función para verificar si SoundVolumeView está instalado en el sistema.
+`installSoundVolumeView:` Añadida función para instalar SoundVolumeView en el sistema.
+`uninstallSoundVolumeView:` Añadida función para desinstalar SoundVolumeView del sistema.
+`platformSupported:` Añadida función para verificar si la plataforma es compatible (actualmente solo Windows).
+- Improvements:
+  - Added a boolean return (`true` or `false`) to the following methods to indicate whether the operation was successful::
+    - setVolume
+    - mute
+    - unMute
+    - setPlaybackThroughDevice
+    - setListenToThisDevice
+    - setAppDefault
+    - setDefault
+- Added a StreamController to handle the state of `SoundVolumeViewState: [platformNotSupported, installed, notInstalled, errorToInstall, uninstalled, errorToUninstall, errorToSaveFileEncoding]`.
+
 ## 1.0.3
 * BUG FIX: Missed adding assets before vendors
 

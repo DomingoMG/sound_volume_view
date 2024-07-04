@@ -10,6 +10,9 @@
 .svn/
 migrate_working_dir/
 
+# SoundVolumeView devices.json
+devices.json
+
 # IntelliJ related
 *.iml
 *.ipr
