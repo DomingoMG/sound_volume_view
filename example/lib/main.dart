@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:sound_volume_view/sound_volume_view_library.dart';
-
 /// This file is a part of SoundVolumeView (https://github.com/DomingoMG/sound_volume_view.dart).
 ///
 /// Copyright (c) 2024, Domingo Montesdeoca González <DomingoMG97@gmail.com>.
@@ -25,18 +24,35 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  late SoundVolumeView soundVolumeView;
+  SoundVolumeView soundVolumeView = SoundVolumeView.getInstance();
 
   @override
-  void initState() {
-    soundVolumeView = SoundVolumeView();
+  void initState() {    
+    soundVolumeView.stateController.stream.listen((state) => _onSoundVolumeViewState(state));
     
     Future.microtask(() async {
-      await soundVolumeView.refreshDevices();
-      if( !mounted ) return;
-      setState(() {});
+      final checkSoundVolumeViewInstalled = await soundVolumeView.checkIfSoundVolumeViewInstalled();
+      if( !checkSoundVolumeViewInstalled ) {
+        bool isInstalled = await soundVolumeView.installSoundVolumeView();
+        if( !isInstalled ) return throw Exception('SoundVolumeView not installed');
+        debugPrint('SoundVolumeView Already installed');
+        await soundVolumeView.refreshDevices();
+        if( !mounted ) return;
+        setState(() {});
+      }
+
+      if( checkSoundVolumeViewInstalled ){
+        await soundVolumeView.refreshDevices();
+        if( !mounted ) return;
+        setState(() {});
+      }
+      
     });
     super.initState();
+  }
+
+  void _onSoundVolumeViewState( SoundVolumeViewState state ) {
+    debugPrint('SoundVolumeView state: $state');
   }
 
   @override
@@ -47,6 +63,17 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
         appBar: AppBar(
           title: const Text('Sound Volume View'),
+          actions: [
+            IconButton(
+              icon: const Icon(Icons.remove_moderator_outlined),
+              tooltip: 'Uninstall SoundVolumeView',
+              onPressed: () async {
+                final isUninstalled = await soundVolumeView.uninstallSoundVolumeView();
+                debugPrint('SoundVolumeView uninstalled: $isUninstalled');
+              },
+            ),
+            const SizedBox(width: 90),
+          ],
         ),
         body: Column(
           children: [
