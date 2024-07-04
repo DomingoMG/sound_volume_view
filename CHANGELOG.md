@@ -1,8 +1,8 @@
 ## 2.0.0 
-`checkIfSoundVolumeViewInstalled:` Añadida función para verificar si SoundVolumeView está instalado en el sistema.
-`installSoundVolumeView:` Añadida función para instalar SoundVolumeView en el sistema.
-`uninstallSoundVolumeView:` Añadida función para desinstalar SoundVolumeView del sistema.
-`platformSupported:` Añadida función para verificar si la plataforma es compatible (actualmente solo Windows).
+`checkIfSoundVolumeViewInstalled:` Added function to check if SoundVolumeView is installed on the system.
+`installSoundVolumeView:` Added function to install SoundVolumeView on the system.
+`uninstallSoundVolumeView:` Added function to uninstall SoundVolumeView from the system.
+`platformSupported:` Added function to check if the platform is supported (currently only Windows).
 - Improvements:
   - Added a boolean return (`true` or `false`) to the following methods to indicate whether the operation was successful::
     - setVolume
