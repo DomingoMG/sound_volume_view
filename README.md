@@ -1,14 +1,13 @@
-SoundVolumeView that displays general information and the current volume level for all active sound components in your system, and allows you to instantly mute and unmute them.
+SoundVolumeView displays general information and the current volume level for all active sound components in your system and allows you to instantly mute and unmute them.
 
 ![](https://github.com/DomingoMG/sound_volume_view/blob/main/assets/SoundVolumeView.png?raw=true)
 
 ## Expressions of gratitude
-First of all thanks to nirsoft for creating SoundVolumeView.exe. Without this it would not be possible for Windows.
-https://www.nirsoft.net/utils/sound_volume_view.html
+First of all, thanks to NirSoft for creating SoundVolumeView.exe. Without this, it would not be possible for Windows.  
+Visit [NirSoft SoundVolumeView](https://www.nirsoft.net/utils/sound_volume_view.html) for more information.
 
 ## Getting started
-Supported platforms:  
-
+Supported platforms:
   - ✅ Windows
   - ❌ MacOS
   - ❌ Linux
@@ -17,12 +16,37 @@ Supported platforms:
   - ❌ Web
 
 ## Usage
-The instance SoundVolumeView() will look for the executable SoundVolumeView.exe in the compilation files of the program.
-If not found, it will throw an ```PlatformException``` specifying the path of the executable.
+The `SoundVolumeView` instance will search for the executable via the command line. If it is not found, it will launch the SoundVolumeView installation internally.
 
+#### Sigleton instance
 ```dart
-SoundVolumeView soundVolumeView = SoundVolumeView();
-// ...build/windows/runner/Debug/vendors/sound_volume_view.exe // Add the path vendor folder and the executable SoundVolumeView.exe
+SoundVolumeView soundVolumeView = SoundVolumeView.getInstance();
+```
+
+#### First make sure you have SoundVolumeView installed on your system. Example:
+```dart
+bool isCheckIfSoundVolumeViewInstalled = await soundVolumeView.checkIfSoundVolumeViewInstalled();
+
+late bool isInstalled;
+if( !isCheckIfSoundVolumeViewInstalled ) {
+  isInstalled = await soundVolumeView.installSoundVolumeView();
+}
+
+if( isInstalled ) {
+  await soundVolumeView.refreshDevices();
+}
+```
+
+#### Second if you do not have SoundVolumeView installed, you can install it with the following command:
+```dart
+final isInstalled = await soundVolumeView.installSoundVolumeView();
+if( !isInstalled ) ......
+```
+
+#### Third if you want to uninstall SoundVolumeView, you can run the following command:
+```dart
+final isUninstalled = await soundVolumeView.uninstallSoundVolumeView();
+if( !isUninstalled ) ......
 ```
 
 #### First to get the devices you must call: ```soundVolumeView.refreshDevices();```
@@ -44,25 +68,25 @@ List<Device> devices = await soundVolumeView.refreshDevices();
 
 #### Set UnMute / Mute
 ```dart
-await soundVolumeView.unMute( devices[index] );
+bool isUnMute = await soundVolumeView.unMute( devices[index] );
 
-await soundVolumeView.mute( devices[index] );
+bool isMute = await soundVolumeView.mute( devices[index] );
 ```
 
 #### Set Volume: Range [0-100] int
 ```dart
-await soundVolumeView.setVolume(soundVolumeView.captureDevices[index], 100);
+bool isSetVolume = await soundVolumeView.setVolume(soundVolumeView.captureDevices[index], 100);
 ```
 
 #### You can also listen to the capture sound.
 ```dart
-await soundVolumeView.setListenToThisDevice(devices[index], listen: true);
+bool isSetListenToThisDevice = await soundVolumeView.setListenToThisDevice(devices[index], listen: true);
 ```
 
 #### You can also set the sound output to the recording line
 ```dart
   Device outputDevice = soundVolumeView.outputDevices.firstWhere(( device ) => device.itemID == value);
-  await soundVolumeView.setPlaybackThroughDevice(soundVolumeView.captureDevices[index], outputDevice);
+  final isSetPlaybackThroughDevice = await soundVolumeView.setPlaybackThroughDevice(soundVolumeView.captureDevices[index], outputDevice);
 ```
 
 #### DefaultType: all - Set all default types (Console, Multimedia, and Communications)
@@ -78,10 +102,10 @@ enum DefaultType {
 #### You can assign output devices to applications via the pid process
 ```dart
 Device outputDeviceFound = soundVolumeView.outputDevices.firstWhere((element) => element.itemID == itemId);
-await soundVolumeView.setAppDefault(soundVolumeView.applicationDevices[index], device, defaultType: DefaultType.all);
+final isSetAppDefault = await soundVolumeView.setAppDefault(soundVolumeView.applicationDevices[index], device, defaultType: DefaultType.all);
 ```
 
 #### Indicates which is the default output device, communications, etc...
 ```dart
-await soundVolumeView.setDefault(soundVolumeView.outputDevices[index], defaultType: DefaultType.all);
+final isSetDefault = await soundVolumeView.setDefault(soundVolumeView.outputDevices[index], defaultType: DefaultType.all);
 ```
